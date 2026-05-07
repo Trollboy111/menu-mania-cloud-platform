@@ -1,0 +1,20 @@
+# Build folders
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Secrets / cloud credentials
+*service-account*.json
+swd63a-26-486912-18604bba4162.json
+.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

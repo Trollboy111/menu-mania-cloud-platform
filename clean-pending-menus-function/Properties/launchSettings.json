@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "clean-pending-menus-function": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:54387;http://localhost:54388"
+    }
+  }
+}

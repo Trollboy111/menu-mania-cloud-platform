@@ -1,0 +1,86 @@
+﻿@model List<MenuManiaCloudPlatform.Models.CatalogueItem>
+
+@{
+    ViewData["Title"] = "Catalogue";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title mb-4">Menu Catalogue</h2>
+
+            <form method="get" asp-controller="Menu" asp-action="Catalogue" class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <input type="text"
+                           name="searchTerm"
+                           value="@ViewBag.SearchTerm"
+                           class="form-control"
+                           placeholder="Search for dish or restaurant..." />
+                </div>
+
+                <div class="col-md-3">
+                    <select name="sortOrder" class="form-select">
+                        <option value="asc" selected="@(ViewBag.SortOrder == "asc")">Price: Low to High</option>
+                        <option value="desc" selected="@(ViewBag.SortOrder == "desc")">Price: High to Low</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary w-100">Apply</button>
+                </div>
+            </form>
+
+            @if (Model == null || !Model.Any())
+            {
+                <div class="alert alert-info">
+                    No completed menu items found.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Restaurant</th>
+                                <th>Dish</th>
+                                <th>Price (€)</th>
+                                <th>Status</th>
+                                <th>Translate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr data-restaurant-id="@item.RestaurantId"
+                                    data-menu-id="@item.MenuId"
+                                    data-menu-item-id="@item.MenuItemId">
+                                    <td>@item.RestaurantName</td>
+                                    <td class="dish-name">@item.ItemName</td>
+                                    <td>@item.Price.ToString("0.00")</td>
+                                    <td>
+                                        <span class="badge bg-success">@item.Status</span>
+                                    </td>
+                                    <td>
+                                        <select class="language-select form-select form-select-sm mb-2">
+                                            <option value="fr">French</option>
+                                            <option value="it">Italian</option>
+                                            <option value="es">Spanish</option>
+                                            <option value="en">English</option>
+                                        </select>
+
+                                        <button type="button" class="btn btn-sm btn-primary translate-btn">
+                                            Translate
+                                        </button>
+
+                                        <div class="translated-text mt-2 text-muted"></div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

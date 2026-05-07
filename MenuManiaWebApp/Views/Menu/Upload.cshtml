@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Upload Menu";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title mb-4">Upload Menu Images</h3>
+
+            <form id="uploadForm">
+                <div class="mb-3">
+                    <label for="restaurantName" class="form-label">Restaurant Name</label>
+                    <input type="text"
+                           class="form-control"
+                           id="restaurantName"
+                           placeholder="Enter restaurant name"
+                           required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="fileInput" class="form-label">Select Menu Images</label>
+                    <input type="file"
+                           class="form-control"
+                           id="fileInput"
+                           multiple
+                           accept="image/*"
+                           required />
+                    <div class="form-text">You can upload multiple images at once.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Upload
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mt-4">
+        <div class="card-body">
+            <h5 class="mb-3">Upload Progress</h5>
+            <div id="progressContainer"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/upload.js"></script>
+}
