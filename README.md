@@ -2,6 +2,9 @@
 
 AI-powered restaurant menu digitization platform built using Google Cloud, OCR, Pub/Sub, and serverless functions.
 
+## Live Demo
+https://menu-mania-web-1036303316998.europe-west1.run.app
+
 ## Features
 
 - OCR-based menu extraction
